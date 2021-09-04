@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'main_page.dart';
 import 'lamp_page.dart';
 import 'shop_page.dart';
 import 'guide_page.dart';
@@ -15,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   int currentTab = 0;
 
   final List<Widget> screens = [
-    Lamp(),
+    Main(),
     Shop(),
     Guide(),
     Profile()
@@ -24,6 +26,8 @@ class _HomePageState extends State<HomePage> {
   final PageStorageBucket bucket = PageStorageBucket();
   Widget currentScreen = Lamp();
 
+  Color blColor = Colors.blueAccent;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,9 +35,36 @@ class _HomePageState extends State<HomePage> {
         child: currentScreen,
         bucket: bucket,
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: SpeedDial(
+        curve: Curves.easeIn,
+        backgroundColor: blColor,
+        closeManually: true,
+        animatedIcon: AnimatedIcons.menu_close,
+        overlayOpacity: 0,
+        animationSpeed: 1,
         child: Icon(Icons.bluetooth),
-        onPressed: () {},
+        onOpen: () {
+          setState(() {
+            blColor = Colors.redAccent;
+          });
+        },
+        onClose: () {
+          setState(() {
+            blColor = Colors.blueAccent;
+          });
+        },
+        children: [
+          SpeedDialChild(
+            child: Icon(Icons.bluetooth),
+            label: "Bluetooth",
+            onTap: () {}
+          ),
+          SpeedDialChild(
+              child: Icon(Icons.tab),
+              label: "Bluetooth",
+              onTap: () {}
+          )
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
@@ -52,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {
                       setState(() {
                         currentScreen =
-                            Lamp();
+                            Main();
                         currentTab = 0;
                       });
                     },
@@ -64,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                           color: currentTab == 0 ? Colors.amberAccent : Colors.grey,
                         ),
                         Text(
-                          'Лампа',
+                          'Главная',
                           style: TextStyle(
                             color: currentTab == 0 ? Colors.amberAccent : Colors.grey,
                           ),
