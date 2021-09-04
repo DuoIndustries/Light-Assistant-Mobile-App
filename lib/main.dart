@@ -6,7 +6,7 @@ void main() {
     MaterialApp(
       home: HomePage(),
       theme: ThemeData(
-        primarySwatch: Colors.lime,
+        primarySwatch: Colors.amber,
       ),
       debugShowCheckedModeBanner: false,
     )
