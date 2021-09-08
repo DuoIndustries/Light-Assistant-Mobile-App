@@ -9,9 +9,6 @@ class _LampState extends State<Lamp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Lamp'),
-      ),
     );
   }
 }

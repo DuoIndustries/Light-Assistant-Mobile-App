@@ -24,9 +24,9 @@ class _HomePageState extends State<HomePage> {
   ];
 
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = Lamp();
+  Widget currentScreen = Main();
 
-  Color blColor = Colors.blueAccent;
+  Color blColor = Color(0xFFd7a0cf);
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +39,10 @@ class _HomePageState extends State<HomePage> {
         curve: Curves.easeIn,
         backgroundColor: blColor,
         closeManually: true,
-        animatedIcon: AnimatedIcons.menu_close,
+        icon: Icons.close,
         overlayOpacity: 0,
         animationSpeed: 1,
-        child: Icon(Icons.bluetooth),
+        child: Icon(Icons.lightbulb),
         onOpen: () {
           setState(() {
             blColor = Colors.redAccent;
@@ -50,18 +50,20 @@ class _HomePageState extends State<HomePage> {
         },
         onClose: () {
           setState(() {
-            blColor = Colors.blueAccent;
+            blColor = Color(0xFFd7a0cf);
           });
         },
         children: [
           SpeedDialChild(
-            child: Icon(Icons.bluetooth),
-            label: "Bluetooth",
+            backgroundColor: Colors.blueAccent,
+            child: Icon(
+              Icons.bluetooth,
+              color: Colors.white,
+            ),
             onTap: () {}
           ),
           SpeedDialChild(
               child: Icon(Icons.tab),
-              label: "Bluetooth",
               onTap: () {}
           )
         ],
@@ -69,7 +71,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
-        notchMargin: 10,
+        notchMargin: 15,
         child: Container(
           height: 60,
           child: Row(
@@ -79,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MaterialButton(
-                    minWidth: 50,
+                    minWidth: 70,
                     onPressed: () {
                       setState(() {
                         currentScreen =
@@ -91,20 +93,14 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(
-                          Icons.lightbulb,
-                          color: currentTab == 0 ? Colors.amberAccent : Colors.grey,
-                        ),
-                        Text(
-                          'Главная',
-                          style: TextStyle(
-                            color: currentTab == 0 ? Colors.amberAccent : Colors.grey,
-                          ),
+                          Icons.home,
+                          color: currentTab == 0 ? Color(0xFFd7a0cf) : Color(0xFF4d8b87),
                         ),
                       ],
                     ),
                   ),
                   MaterialButton(
-                    minWidth: 50,
+                    minWidth: 70,
                     onPressed: () {
                       setState(() {
                         currentScreen =
@@ -117,13 +113,7 @@ class _HomePageState extends State<HomePage> {
                       children: <Widget>[
                         Icon(
                           Icons.shopping_cart,
-                          color: currentTab == 1 ? Colors.amberAccent : Colors.grey,
-                        ),
-                        Text(
-                          'Магазин',
-                          style: TextStyle(
-                            color: currentTab == 1 ? Colors.amberAccent : Colors.grey,
-                          ),
+                          color: currentTab == 1 ? Color(0xFFd7a0cf) : Color(0xFF4d8b87),
                         ),
                       ],
                     ),
@@ -135,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   MaterialButton(
-                    minWidth: 50,
+                    minWidth: 70,
                     onPressed: () {
                       setState(() {
                         currentScreen =
@@ -148,19 +138,13 @@ class _HomePageState extends State<HomePage> {
                       children: <Widget>[
                         Icon(
                           Icons.book,
-                          color: currentTab == 2 ? Colors.amberAccent : Colors.grey,
-                        ),
-                        Text(
-                          'Руководство',
-                          style: TextStyle(
-                            color: currentTab == 2 ? Colors.amberAccent : Colors.grey,
-                          ),
+                          color: currentTab == 2 ? Color(0xFFd7a0cf) : Color(0xFF4d8b87),
                         ),
                       ],
                     ),
                   ),
                   MaterialButton(
-                    minWidth: 50,
+                    minWidth: 70,
                     onPressed: () {
                       setState(() {
                         currentScreen =
@@ -172,14 +156,8 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(
-                          Icons.settings_applications,
-                          color: currentTab == 3 ? Colors.amberAccent : Colors.grey,
-                        ),
-                        Text(
-                          'Профиль',
-                          style: TextStyle(
-                            color: currentTab == 3 ? Colors.amberAccent : Colors.grey,
-                          ),
+                          Icons.settings,
+                          color: currentTab == 3 ? Color(0xFFd7a0cf) : Color(0xFF4d8b87),
                         ),
                       ],
                     ),
