@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'main_page.dart';
-import 'lamp_page.dart';
 import 'shop_page.dart';
 import 'guide_page.dart';
 import 'profile_page.dart';
@@ -26,7 +25,8 @@ class _HomePageState extends State<HomePage> {
   final PageStorageBucket bucket = PageStorageBucket();
   Widget currentScreen = Main();
 
-  Color blColor = Color(0xFFd7a0cf);
+  Color blColor = Color(0xFF4d8b87);
+  Color blColorLamp = Colors.white;
 
   @override
   Widget build(BuildContext context) {
@@ -39,18 +39,22 @@ class _HomePageState extends State<HomePage> {
         curve: Curves.easeIn,
         backgroundColor: blColor,
         closeManually: true,
-        icon: Icons.close,
+        child: Icon(
+          Icons.lightbulb,
+          color: blColorLamp,
+        ),
         overlayOpacity: 0,
         animationSpeed: 1,
-        child: Icon(Icons.lightbulb),
         onOpen: () {
           setState(() {
-            blColor = Colors.redAccent;
+            blColorLamp = Colors.yellowAccent;
+            blColor = Color(0xFFd7a0cf);
           });
         },
         onClose: () {
           setState(() {
-            blColor = Color(0xFFd7a0cf);
+            blColorLamp = Colors.white;
+            blColor = Color(0xFF4d8b87);
           });
         },
         children: [
@@ -63,7 +67,7 @@ class _HomePageState extends State<HomePage> {
             onTap: () {}
           ),
           SpeedDialChild(
-              child: Icon(Icons.tab),
+              child: Icon(Icons.settings),
               onTap: () {}
           )
         ],
